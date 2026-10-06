@@ -1,1 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recurring Decimals Practice Hub - Edexcel GCSE Maths</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: Inter, Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #f4f4f9; color: #333; }
+        h1, h2 { color: #003366; }
+        .card { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        button { background: #003366; color: white; border: none; padding: 10px 15px; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
+        button:hover { background: #002244; }
+        .accordion-content { display: none; margin-top: 10px; padding: 12px; background: #eef2f7; border-left: 4px solid #003366; border-radius: 4px; }
+        .tier-section { margin-top: 15px; }
+        input[type="text"] { padding: 8px 12px; width: 200px; margin-right: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        .feedback { margin-top: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
 
+    <h1>Recurring Decimals Practice Hub</h1>
+    <p>Interactive revision tool for Edexcel GCSE Maths (Specification N13).</p>
+
+    <div class="card">
+        <h2>📚 Lesson Summary & Formulae</h2>
+        <p><strong>Key Concept:</strong> To convert a recurring decimal to a fraction, define it as $$x$$, multiply by appropriate powers of $$10$$ to align the repeating tails, and subtract to eliminate the infinite decimals.</p>
+        <p><strong>Quick Rule:</strong> Single recurring digit $$\rightarrow$$ divide by $$9$$. Two recurring digits $$\rightarrow$$ divide by $$99$$. Mixed recurring decimals require aligning powers of $$10$$ before subtracting.</p>
+    </div>
+
+    <div class="card">
+        <h2>💡 Step-by-Step Worked Examples</h2>
+        <div>
+            <button onclick="toggleAccordion('ex1')">Example 1: Convert $$0.\dot{7}$$ (Bronze)</button>
+            <div id="ex1" class="accordion-content">
+                <p><strong>Step 1:</strong> Let $$x = 0.777...$$</p>
+                <p><strong>Step 2:</strong> Multiply by $$10$$: $$10x = 7.777...$$</p>
+                <p><strong>Step 3:</strong> Subtract $$x$$: $$9x = 7 \implies x = \frac{7}{9}$$.</p>
+            </div>
+        </div>
+        <div style="margin-top: 10px;">
+            <button onclick="toggleAccordion('ex2')">Example 2: Evaluating Student Method (Silver)</button>
+            <div id="ex2" class="accordion-content">
+                <p><strong>Analysis:</strong> Ted multiplied by $$10$$ incorrectly without aligning the recurring tails properly ($$0.4333...$$ vs $$4.3434...$$). Proper alignment requires multiplying by $$100$$ and $$10$$ for mixed recurring decimals.</p>
+            </div>
+        </div>
+        <div style="margin-top: 10px;">
+            <button onclick="toggleAccordion('ex3')">Example 3: Convert $$0.2\dot{5}\dot{6}$$ (Gold)</button>
+            <div id="ex3" class="accordion-content">
+                <p><strong>Step 1:</strong> Let $$x = 0.25656...$$</p>
+                <p><strong>Step 2:</strong> $$1000x = 256.5656...$$ and $$10x = 2.5656...$$</p>
+                <p><strong>Step 3:</strong> Subtract to get $$990x = 254 \implies x = \frac{127}{495}$$.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🎯 Infinite Dynamic Practice Generator</h2>
+        <div class="tier-section">
+            <label for="difficulty"><strong>Select Difficulty:</strong></label>
+            <select id="difficulty" onchange="generateQuestion()">
+                <option value="bronze">Bronze (Single Recurring Digit)</option>
+                <option value="silver">Silver (Two Recurring Digits)</option>
+                <option value="gold">Gold (Mixed Recurring Decimals)</option>
+            </select>
+        </div>
+        <p id="question-text" style="margin-top: 15px; font-size: 1.1em; font-weight: bold;"></p>
+        <div>
+            <input type="text" id="user-answer" placeholder="e.g. 7/9">
+            <button onclick="checkAnswer()">Submit Answer</button>
+        </div>
+        <p id="feedback" class="feedback"></p>
+        <button onclick="generateQuestion()" style="margin-top: 10px; background: #555;">New Question</button>
+    </div>
+
+    <script>
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            content.style.display = content.style.display === "block" ? "none" : "block";
+        }
+
+        let currentAnswer = "";
+
+        function generateQuestion() {
+            const diff = document.getElementById("difficulty").value;
+            document.getElementById("user-answer").value = "";
+            document.getElementById("feedback").innerText = "";
+            
+            if (diff === "bronze") {
+                const digit = Math.floor(Math.random() * 8) + 1; // 1 to 8
+                document.getElementById("question-text").innerHTML = "Convert $$0.\\dot{" + digit + "}$$ into a fraction in its simplest form.";
+                let g = gcd(digit, 9);
+                currentAnswer = (digit/g) + "/" + (9/g);
+            } else if (diff === "silver") {
+                const num = Math.floor(Math.random() * 89) + 10; 
+                const d1 = Math.floor(num / 10);
+                const d2 = num % 10;
+                document.getElementById("question-text").innerHTML = "Convert $$0.\\dot{" + d1 + "}\\dot{" + d2 + "}$$ into a fraction in its simplest form.";
+                let g = gcd(num, 99);
+                currentAnswer = (num/g) + "/" + (99/g);
+            } else {
+                // Gold: mixed recurring decimal e.g. 0.23 recurring = 21/90 = 7/30
+                document.getElementById("question-text").innerHTML = "Convert $$0.2\\dot{3}$$ into a fraction in its simplest form.";
+                currentAnswer = "7/30";
+            }
+            if (window.MathJax) {
+                MathJax.typeset();
+            }
+        }
+
+        function gcd(a, b) {
+            return b === 0 ? a : gcd(b, a % b);
+        }
+
+        function checkAnswer() {
+            const userAns = document.getElementById("user-answer").value.replace(/\s+/g, '');
+            const fb = document.getElementById("feedback");
+            if (userAns === currentAnswer) {
+                fb.style.color = "green";
+                fb.innerText = "Correct! Well done.";
+            } else {
+                fb.style.color = "red";
+                fb.innerText = "Incorrect. Try again! Expected format: numerator/denominator (simplified). Solution: " + currentAnswer;
+            }
+        }
+
+        window.onload = generateQuestion;
+    </script>
+</body>
+</html>
