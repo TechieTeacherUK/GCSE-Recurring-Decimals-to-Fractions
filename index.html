@@ -1,131 +1,336 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full bg-slate-50">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recurring Decimals Practice Hub - Edexcel GCSE Maths</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <style>
-        body { font-family: Inter, Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #f4f4f9; color: #333; }
-        h1, h2 { color: #003366; }
-        .card { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        button { background: #003366; color: white; border: none; padding: 10px 15px; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
-        button:hover { background: #002244; }
-        .accordion-content { display: none; margin-top: 10px; padding: 12px; background: #eef2f7; border-left: 4px solid #003366; border-radius: 4px; }
-        .tier-section { margin-top: 15px; }
-        input[type="text"] { padding: 8px 12px; width: 200px; margin-right: 10px; border: 1px solid #ccc; border-radius: 4px; }
-        .feedback { margin-top: 10px; font-weight: bold; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edexcel GCSE Maths - Recurring Decimals to Fractions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$$', '$$'], ['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    mjx-container { max-width: 100%; overflow-x: auto; overflow-y: hidden; padding-bottom: 2px; }
+    mjx-container[display="true"] { margin: 0.5em 0 !important; }
+  </style>
 </head>
-<body>
+<body class="h-full flex flex-col text-slate-800 antialiased font-sans">
 
-    <h1>Recurring Decimals Practice Hub</h1>
-    <p>Interactive revision tool for Edexcel GCSE Maths (Specification N13).</p>
-
-    <div class="card">
-        <h2>📚 Lesson Summary & Formulae</h2>
-        <p><strong>Key Concept:</strong> To convert a recurring decimal to a fraction, define it as $$x$$, multiply by appropriate powers of $$10$$ to align the repeating tails, and subtract to eliminate the infinite decimals.</p>
-        <p><strong>Quick Rule:</strong> Single recurring digit $$\rightarrow$$ divide by $$9$$. Two recurring digits $$\rightarrow$$ divide by $$99$$. Mixed recurring decimals require aligning powers of $$10$$ before subtracting.</p>
+  <header class="bg-emerald-900 text-white shadow-lg border-b border-emerald-700">
+    <div class="max-w-6xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="flex items-center space-x-3">
+        <span class="bg-emerald-600 text-emerald-100 text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">Edexcel GCSE (1MA1)</span>
+        <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight">Number: Recurring Decimals &rarr; Fractions</h1>
+      </div>
+      <div class="flex items-center space-x-2 text-sm text-emerald-200">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
+        <span>Interactive Practice Hub</span>
+      </div>
     </div>
+  </header>
 
-    <div class="card">
-        <h2>💡 Step-by-Step Worked Examples</h2>
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 py-8 sm:px-6 lg:px-8 space-y-8">
+
+    <!-- Theory -->
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-slate-900 mb-6">Theory &amp; Key Rules</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+          <div class="flex items-center space-x-2 text-emerald-700 font-bold mb-2">
+            <span class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-xs">1</span>
+            <h3>Let x equal the decimal</h3>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">Write <strong>x = </strong> the recurring decimal, e.g. x = 0.7777...</p>
+          <div class="text-xs bg-white border border-slate-200 rounded-lg p-2.5 text-center font-mono text-emerald-900">$$x = 0.\dot{7}$$</div>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+          <div class="flex items-center space-x-2 text-emerald-700 font-bold mb-2">
+            <span class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-xs">2</span>
+            <h3>Multiply to shift the repeat</h3>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">Multiply by 10 per repeating digit, so the recurring parts line up exactly.</p>
+          <div class="text-xs bg-white border border-slate-200 rounded-lg p-2.5 text-center font-mono text-emerald-900">$$10^n x = \ldots .\dot{d}\dot{d}\ldots$$</div>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
+          <div class="flex items-center space-x-2 text-emerald-700 font-bold mb-2">
+            <span class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-xs">3</span>
+            <h3>Subtract &amp; simplify</h3>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">Subtract the original x so the recurring parts cancel, then solve and simplify.</p>
+          <div class="text-xs bg-white border border-slate-200 rounded-lg p-2.5 text-center font-mono text-emerald-900">$$10^n x - x = \text{integer}$$</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Examples -->
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-slate-900 mb-6">Lesson Worked Examples</h2>
+      <div class="space-y-4">
+
+        <div class="border border-slate-200 rounded-xl overflow-hidden">
+          <button onclick="toggleAccordion('ex1')" class="w-full bg-slate-50 hover:bg-slate-100 p-4 text-left font-semibold flex justify-between items-center gap-3 text-slate-800 text-sm sm:text-base">
+            <span class="flex items-center gap-3 min-w-0 flex-1">
+              <span class="shrink-0 bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-md font-bold">Example 1 [2 marks]</span>
+              <span class="min-w-0">Convert $$0.\dot{7}$$ to a fraction.</span>
+            </span>
+            <span id="ex1-icon" class="shrink-0 transition-transform duration-200 text-slate-500">&#9656;</span>
+          </button>
+          <div id="ex1-body" class="hidden p-5 bg-white border-t border-slate-200 space-y-3 text-sm text-slate-700">
+            <p><strong>1. Let</strong> $$x = 0.\dot{7} = 0.7777\ldots$$</p>
+            <p><strong>2. One recurring digit, so multiply by 10:</strong> $$10x = 7.7777\ldots$$</p>
+            <p><strong>3. Subtract:</strong> $$10x - x = 7.7777\ldots - 0.7777\ldots \implies 9x = 7$$</p>
+            <p class="pt-2 font-bold text-emerald-900 border-t border-slate-100">$$\text{Final Result: } x = \frac{7}{9}$$</p>
+          </div>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl overflow-hidden">
+          <button onclick="toggleAccordion('ex2')" class="w-full bg-slate-50 hover:bg-slate-100 p-4 text-left font-semibold flex justify-between items-center gap-3 text-slate-800 text-sm sm:text-base">
+            <span class="flex items-center gap-3 min-w-0 flex-1">
+              <span class="shrink-0 bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-md font-bold">Example 2 [3 marks]</span>
+              <span class="min-w-0">Convert $$0.\dot{1}\dot{8}$$ to a fraction.</span>
+            </span>
+            <span id="ex2-icon" class="shrink-0 transition-transform duration-200 text-slate-500">&#9656;</span>
+          </button>
+          <div id="ex2-body" class="hidden p-5 bg-white border-t border-slate-200 space-y-3 text-sm text-slate-700">
+            <p><strong>1. Let</strong> $$x = 0.\dot{1}\dot{8} = 0.181818\ldots$$</p>
+            <p><strong>2. Two recurring digits, so multiply by 100:</strong> $$100x = 18.1818\ldots$$</p>
+            <p><strong>3. Subtract:</strong> $$100x - x = 18.1818\ldots - 0.1818\ldots \implies 99x = 18$$</p>
+            <p><strong>4. Simplify:</strong> $$x = \frac{18}{99} = \frac{2}{11}$$</p>
+            <p class="pt-2 font-bold text-emerald-900 border-t border-slate-100">$$\text{Final Result: } x = \frac{2}{11}$$</p>
+          </div>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl overflow-hidden">
+          <button onclick="toggleAccordion('ex3')" class="w-full bg-slate-50 hover:bg-slate-100 p-4 text-left font-semibold flex justify-between items-center gap-3 text-slate-800 text-sm sm:text-base">
+            <span class="flex items-center gap-3 min-w-0 flex-1">
+              <span class="shrink-0 bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-md font-bold">Example 3 [4 marks]</span>
+              <span class="min-w-0">Convert $$0.4\dot{1}$$ to a fraction.</span>
+            </span>
+            <span id="ex3-icon" class="shrink-0 transition-transform duration-200 text-slate-500">&#9656;</span>
+          </button>
+          <div id="ex3-body" class="hidden p-5 bg-white border-t border-slate-200 space-y-3 text-sm text-slate-700">
+            <p><strong>1. Let</strong> $$x = 0.4\dot{1} = 0.41111\ldots$$ (only the 1 recurs)</p>
+            <p><strong>2. Shift past the non-recurring digit:</strong> $$10x = 4.1111\ldots$$</p>
+            <p><strong>3. Shift one more so the recurring parts align:</strong> $$100x = 41.1111\ldots$$</p>
+            <p><strong>4. Subtract:</strong> $$100x - 10x = 41.111\ldots - 4.111\ldots \implies 90x = 37$$</p>
+            <p class="pt-2 font-bold text-emerald-900 border-t border-slate-100">$$\text{Final Result: } x = \frac{37}{90}$$</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Generator -->
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
         <div>
-            <button onclick="toggleAccordion('ex1')">Example 1: Convert $$0.\dot{7}$$ (Bronze)</button>
-            <div id="ex1" class="accordion-content">
-                <p><strong>Step 1:</strong> Let $$x = 0.777...$$</p>
-                <p><strong>Step 2:</strong> Multiply by $$10$$: $$10x = 7.777...$$</p>
-                <p><strong>Step 3:</strong> Subtract $$x$$: $$9x = 7 \implies x = \frac{7}{9}$$.</p>
+          <h2 class="text-xl font-bold text-slate-900">Dynamic Question Generator</h2>
+          <p class="text-xs text-slate-500 mt-0.5">Endless practice questions in authentic Edexcel exam style.</p>
+        </div>
+        <div class="flex flex-wrap gap-1 p-1 bg-slate-100 rounded-xl">
+          <button id="btn-level1" onclick="setDifficulty('level1')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all bg-emerald-600 text-white shadow-sm whitespace-nowrap">Level 1 (1 digit)</button>
+          <button id="btn-level2" onclick="setDifficulty('level2')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all text-slate-600 hover:text-slate-900 whitespace-nowrap">Level 2 (2-digit block)</button>
+          <button id="btn-level3" onclick="setDifficulty('level3')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all text-slate-600 hover:text-slate-900 whitespace-nowrap">Level 3 (3-digit block)</button>
+          <button id="btn-level4" onclick="setDifficulty('level4')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all text-slate-600 hover:text-slate-900 whitespace-nowrap">Level 4 (Mixed)</button>
+        </div>
+      </div>
+
+      <div class="bg-emerald-50/50 border border-emerald-100 rounded-2xl p-6 space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <span id="question-badge" class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Level 1</span>
+          <div class="flex items-center space-x-4 text-xs sm:text-sm font-medium text-slate-600">
+            <span>Score: <strong id="score-counter" class="text-emerald-700 font-bold">0</strong>/<span id="total-counter">0</span></span>
+            <span>Streak: <strong id="streak-counter" class="text-amber-600 font-bold">0 &#128293;</strong></span>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 border border-emerald-100 shadow-sm text-center min-h-[100px] flex items-center justify-center">
+          <div id="question-display" class="text-base sm:text-lg font-medium text-slate-900 leading-relaxed">Generating question...</div>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 border border-emerald-100 shadow-sm space-y-4">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Enter your answer as a fraction in simplest form:</h3>
+          <div class="flex flex-wrap items-center justify-center gap-3 text-sm font-semibold">
+            <div class="flex items-center space-x-2 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg">
+              <label for="input-num" class="font-bold text-emerald-900">Numerator =</label>
+              <input type="text" id="input-num" placeholder="0" class="w-20 px-2 py-1 border border-slate-300 rounded text-center focus:outline-none focus:ring-2 focus:ring-emerald-500 font-mono text-base">
             </div>
-        </div>
-        <div style="margin-top: 10px;">
-            <button onclick="toggleAccordion('ex2')">Example 2: Evaluating Student Method (Silver)</button>
-            <div id="ex2" class="accordion-content">
-                <p><strong>Analysis:</strong> Ted multiplied by $$10$$ incorrectly without aligning the recurring tails properly ($$0.4333...$$ vs $$4.3434...$$). Proper alignment requires multiplying by $$100$$ and $$10$$ for mixed recurring decimals.</p>
+            <div class="flex items-center space-x-2 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg">
+              <label for="input-den" class="font-bold text-emerald-900">Denominator =</label>
+              <input type="text" id="input-den" placeholder="0" class="w-20 px-2 py-1 border border-slate-300 rounded text-center focus:outline-none focus:ring-2 focus:ring-emerald-500 font-mono text-base">
             </div>
+          </div>
+          <p class="text-xs text-center text-slate-400">Your fraction must be fully simplified to be marked correct.</p>
         </div>
-        <div style="margin-top: 10px;">
-            <button onclick="toggleAccordion('ex3')">Example 3: Convert $$0.2\dot{5}\dot{6}$$ (Gold)</button>
-            <div id="ex3" class="accordion-content">
-                <p><strong>Step 1:</strong> Let $$x = 0.25656...$$</p>
-                <p><strong>Step 2:</strong> $$1000x = 256.5656...$$ and $$10x = 2.5656...$$</p>
-                <p><strong>Step 3:</strong> Subtract to get $$990x = 254 \implies x = \frac{127}{495}$$.</p>
-            </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+          <button onclick="checkAnswer()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-2.5 rounded-xl shadow-md transition-all text-sm">Submit Answer</button>
+          <button onclick="generateQuestion()" class="bg-slate-700 hover:bg-slate-800 text-white font-bold px-6 py-2.5 rounded-xl shadow-md transition-all text-sm">New Question</button>
+          <button onclick="toggleSolution()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-5 py-2.5 rounded-xl transition-all text-sm">Toggle Worked Solution</button>
         </div>
-    </div>
 
-    <div class="card">
-        <h2>🎯 Infinite Dynamic Practice Generator</h2>
-        <div class="tier-section">
-            <label for="difficulty"><strong>Select Difficulty:</strong></label>
-            <select id="difficulty" onchange="generateQuestion()">
-                <option value="bronze">Bronze (Single Recurring Digit)</option>
-                <option value="silver">Silver (Two Recurring Digits)</option>
-                <option value="gold">Gold (Mixed Recurring Decimals)</option>
-            </select>
+        <div id="feedback-area" class="hidden rounded-xl p-4 text-center font-bold text-sm transition-all"></div>
+
+        <div id="solution-drawer" class="hidden bg-white rounded-xl p-6 border border-slate-200 text-slate-700 text-sm space-y-2">
+          <h4 class="font-bold text-emerald-900 border-b border-slate-100 pb-2">Full Worked Solution:</h4>
+          <div id="solution-content" class="space-y-2"></div>
         </div>
-        <p id="question-text" style="margin-top: 15px; font-size: 1.1em; font-weight: bold;"></p>
-        <div>
-            <input type="text" id="user-answer" placeholder="e.g. 7/9">
-            <button onclick="checkAnswer()">Submit Answer</button>
-        </div>
-        <p id="feedback" class="feedback"></p>
-        <button onclick="generateQuestion()" style="margin-top: 10px; background: #555;">New Question</button>
-    </div>
+      </div>
+    </section>
+  </main>
 
-    <script>
-        function toggleAccordion(id) {
-            const content = document.getElementById(id);
-            content.style.display = content.style.display === "block" ? "none" : "block";
+  <footer class="bg-slate-900 text-slate-400 text-xs py-6 border-t border-slate-800 text-center">
+    <div class="max-w-6xl mx-auto px-4"><p>Edexcel GCSE Mathematics (1MA1) &bull; Number: Recurring Decimals to Fractions Practice Module</p></div>
+  </footer>
+
+  <script>
+    let currentDifficulty = 'level1';
+    let currentQuestionData = {};
+    let score = 0, total = 0, streak = 0;
+
+    function toggleAccordion(id) {
+      const body = document.getElementById(id + '-body');
+      const icon = document.getElementById(id + '-icon');
+      body.classList.toggle('hidden');
+      icon.classList.toggle('rotate-90');
+    }
+
+    function gcd(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) { [a, b] = [b, a % b]; } return a || 1; }
+    function reduce(num, den) { const g = gcd(num, den); return [num / g, den / g]; }
+    function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+
+    function setDifficulty(diff) {
+      currentDifficulty = diff;
+      ['level1', 'level2', 'level3', 'level4'].forEach(d => {
+        const btn = document.getElementById('btn-' + d);
+        btn.className = d === diff
+          ? "px-3 py-1.5 rounded-lg text-xs font-semibold transition-all bg-emerald-600 text-white shadow-sm whitespace-nowrap"
+          : "px-3 py-1.5 rounded-lg text-xs font-semibold transition-all text-slate-600 hover:text-slate-900 whitespace-nowrap";
+      });
+      const badge = document.getElementById('question-badge');
+      if (diff === 'level1') badge.innerText = "Level 1 (1 recurring digit)";
+      if (diff === 'level2') badge.innerText = "Level 2 (2-digit recurring block)";
+      if (diff === 'level3') badge.innerText = "Level 3 (3-digit recurring block)";
+      if (diff === 'level4') badge.innerText = "Level 4 (Mixed: Levels 1-3)";
+      generateQuestion();
+    }
+
+    function genLevel1() {
+      let d = getRandomInt(1, 8);
+      const [num, den] = reduce(d, 9);
+      return {
+        num, den,
+        texPrompt: `Convert \\(0.\\dot{${d}}\\) to a fraction.`,
+        solution: `
+          <p><strong>1.</strong> $$x = 0.\\dot{${d}} = 0.${d}${d}${d}\\ldots$$</p>
+          <p><strong>2. One recurring digit, multiply by 10:</strong> $$10x = ${d}.${d}${d}\\ldots$$</p>
+          <p><strong>3. Subtract:</strong> $$9x = ${d} \\implies x = \\frac{${d}}{9} = \\frac{${num}}{${den}}$$</p>
+        `
+      };
+    }
+
+    function genLevel2() {
+      let a = getRandomInt(0, 9), b = getRandomInt(0, 9);
+      while (a === b || (a === 0 && b === 0)) { a = getRandomInt(0, 9); b = getRandomInt(0, 9); }
+      const whole = 10 * a + b;
+      const [num, den] = reduce(whole, 99);
+      return {
+        num, den,
+        texPrompt: `Convert \\(0.\\dot{${a}}\\dot{${b}}\\) to a fraction.`,
+        solution: `
+          <p><strong>1.</strong> $$x = 0.\\dot{${a}}\\dot{${b}} = 0.${a}${b}${a}${b}\\ldots$$</p>
+          <p><strong>2. Two recurring digits, multiply by 100:</strong> $$100x = ${a}${b}.${a}${b}\\ldots$$</p>
+          <p><strong>3. Subtract:</strong> $$99x = ${whole} \\implies x = \\frac{${whole}}{99} = \\frac{${num}}{${den}}$$</p>
+        `
+      };
+    }
+
+    function genLevel3() {
+      // Three-digit recurring block, e.g. 0.\dot{1}4\dot{2} = 0.142142142...
+      // Only a=b=c is degenerate here (3 is prime, so no shorter sub-period is possible otherwise).
+      let a = getRandomInt(0, 9), b = getRandomInt(0, 9), c = getRandomInt(0, 9);
+      while (a === b && b === c) { a = getRandomInt(0, 9); b = getRandomInt(0, 9); c = getRandomInt(0, 9); }
+      const whole = 100 * a + 10 * b + c;
+      const [num, den] = reduce(whole, 999);
+      return {
+        num, den,
+        texPrompt: `Convert \\(0.\\dot{${a}}${b}\\dot{${c}}\\) to a fraction.`,
+        solution: `
+          <p><strong>1.</strong> $$x = 0.\\dot{${a}}${b}\\dot{${c}} = 0.${a}${b}${c}${a}${b}${c}\\ldots$$</p>
+          <p><strong>2. Three recurring digits, multiply by 1000:</strong> $$1000x = ${a}${b}${c}.${a}${b}${c}\\ldots$$</p>
+          <p><strong>3. Subtract:</strong> $$999x = ${whole} \\implies x = \\frac{${whole}}{999} = \\frac{${num}}{${den}}$$</p>
+        `
+      };
+    }
+
+    function genLevel4() {
+      // Mixed: pulls a random question from Levels 1-3's own generators.
+      const pick = getRandomInt(1, 3);
+      if (pick === 1) return genLevel1();
+      if (pick === 2) return genLevel2();
+      return genLevel3();
+    }
+
+    function generateQuestion() {
+      document.getElementById('feedback-area').className = 'hidden';
+      document.getElementById('solution-drawer').classList.add('hidden');
+
+      let qData;
+      if (currentDifficulty === 'level1') qData = genLevel1();
+      else if (currentDifficulty === 'level2') qData = genLevel2();
+      else if (currentDifficulty === 'level3') qData = genLevel3();
+      else qData = genLevel4();
+
+      currentQuestionData = qData;
+      document.getElementById('question-display').innerHTML = qData.texPrompt;
+      document.getElementById('solution-content').innerHTML = qData.solution;
+      document.getElementById('input-num').value = '';
+      document.getElementById('input-den').value = '';
+      if (window.MathJax && window.MathJax.typesetPromise) MathJax.typesetPromise();
+    }
+
+    function checkAnswer() {
+      const q = currentQuestionData;
+      const userNum = parseInt(document.getElementById('input-num').value, 10);
+      const userDen = parseInt(document.getElementById('input-den').value, 10);
+      total++;
+      document.getElementById('total-counter').innerText = total;
+      const feedback = document.getElementById('feedback-area');
+      feedback.classList.remove('hidden');
+
+      const validInput = Number.isFinite(userNum) && Number.isFinite(userDen) && userDen !== 0;
+      const equivalent = validInput && (userNum * q.den === q.num * userDen);
+      const simplified = validInput && gcd(userNum, userDen) === 1;
+
+      if (equivalent && simplified) {
+        score++; streak++;
+        document.getElementById('score-counter').innerText = score;
+        document.getElementById('streak-counter').innerText = streak + ' \u{1F525}';
+        feedback.className = 'rounded-xl p-4 text-center font-bold text-sm bg-emerald-100 text-emerald-800 border border-emerald-200';
+        feedback.innerText = "\u2728 Correct and fully simplified!";
+      } else {
+        streak = 0;
+        document.getElementById('streak-counter').innerText = '0 \u{1F525}';
+        feedback.className = 'rounded-xl p-4 text-center font-bold text-sm bg-rose-100 text-rose-800 border border-rose-200';
+        if (equivalent && !simplified) {
+          feedback.innerText = `\u274C Right value, but not fully simplified. Expected: ${q.num}/${q.den}.`;
+        } else {
+          feedback.innerText = `\u274C Not quite. Expected: ${q.num}/${q.den}. Toggle the worked solution to see why!`;
         }
+      }
+    }
 
-        let currentAnswer = "";
+    function toggleSolution() {
+      const drawer = document.getElementById('solution-drawer');
+      drawer.classList.toggle('hidden');
+      if (!drawer.classList.contains('hidden') && window.MathJax) MathJax.typesetPromise();
+    }
 
-        function generateQuestion() {
-            const diff = document.getElementById("difficulty").value;
-            document.getElementById("user-answer").value = "";
-            document.getElementById("feedback").innerText = "";
-            
-            if (diff === "bronze") {
-                const digit = Math.floor(Math.random() * 8) + 1; // 1 to 8
-                document.getElementById("question-text").innerHTML = "Convert $$0.\\dot{" + digit + "}$$ into a fraction in its simplest form.";
-                let g = gcd(digit, 9);
-                currentAnswer = (digit/g) + "/" + (9/g);
-            } else if (diff === "silver") {
-                const num = Math.floor(Math.random() * 89) + 10; 
-                const d1 = Math.floor(num / 10);
-                const d2 = num % 10;
-                document.getElementById("question-text").innerHTML = "Convert $$0.\\dot{" + d1 + "}\\dot{" + d2 + "}$$ into a fraction in its simplest form.";
-                let g = gcd(num, 99);
-                currentAnswer = (num/g) + "/" + (99/g);
-            } else {
-                // Gold: mixed recurring decimal e.g. 0.23 recurring = 21/90 = 7/30
-                document.getElementById("question-text").innerHTML = "Convert $$0.2\\dot{3}$$ into a fraction in its simplest form.";
-                currentAnswer = "7/30";
-            }
-            if (window.MathJax) {
-                MathJax.typeset();
-            }
-        }
-
-        function gcd(a, b) {
-            return b === 0 ? a : gcd(b, a % b);
-        }
-
-        function checkAnswer() {
-            const userAns = document.getElementById("user-answer").value.replace(/\s+/g, '');
-            const fb = document.getElementById("feedback");
-            if (userAns === currentAnswer) {
-                fb.style.color = "green";
-                fb.innerText = "Correct! Well done.";
-            } else {
-                fb.style.color = "red";
-                fb.innerText = "Incorrect. Try again! Expected format: numerator/denominator (simplified). Solution: " + currentAnswer;
-            }
-        }
-
-        window.onload = generateQuestion;
-    </script>
+    window.onload = generateQuestion;
+  </script>
 </body>
 </html>
